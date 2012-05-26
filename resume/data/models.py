@@ -9,6 +9,7 @@ class Profile(models.Model):
 	url		=	models.CharField(max_length=140, blank=True)
 	phone	=	models.CharField(max_length=20, blank=True)
 	description = models.TextField(blank=True)
+	pic		= models.ImageField(upload_to="profile_images", null=True, blank=True)
 	def __unicode__(self):
 		name = self.user
 		return name.username

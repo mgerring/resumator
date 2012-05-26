@@ -22,13 +22,15 @@ DATABASES = {
 }
 
 DEFAULT_FILE_STORAGE = 'storages.backends.sftpstorage.SFTPStorage'
-SFTP_STORAGE_HOST = os.environ['STORAGE_HOST']
-SFTP_STORAGE_ROOT = os.environ['STORAGE_ROOT']
-SFTP_STORAGE_PARAMS = {
-	'username':os.environ['STORAGE_UN'],
-	'password':os.environ['STORAGE_PW'],
-}
-
+try:
+	SFTP_STORAGE_HOST = os.environ['STORAGE_HOST']
+	SFTP_STORAGE_ROOT = os.environ['STORAGE_ROOT']
+	SFTP_STORAGE_PARAMS = {
+		'username':os.environ['STORAGE_UN'],
+		'password':os.environ['STORAGE_PW'],
+	}
+except:
+	pass
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
