@@ -137,6 +137,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 	'resume.data',
 	'south',
+	'storages',
 )
 
 # A sample logging configuration. The only tangible logging
