@@ -51,7 +51,7 @@ class Job(models.Model):
 	company = models.CharField(max_length=50)
 	type_of_job = models.CharField(max_length=1,choices=TYPES)
 	start = models.DateField()
-	end = models.DateField(blank=True)
+	end = models.DateField(blank=True, null=True)
 	current = models.BooleanField()
 	description = models.TextField()
 	url = models.CharField(max_length=100, blank=True)
