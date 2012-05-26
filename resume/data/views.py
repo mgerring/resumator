@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import *
 from django.core import serializers
-from resume.models import *
+from models import *
 
 def resume_as_json(request, resume_id):
 	json_serializer = serializers.get_serializer("json")()
