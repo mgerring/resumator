@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Matthew Burton Gerring{% endblock %}
+
+{% block header %}
+	<h1>{{object.profile.user.first_name}} {{object.profile.user.last_name}}</h1>
+	<ul>
+		<li><a href="tel:{{object.profile.phone}}">{{object.profile.phone}}</a></li>
+		<li><a href="mailto:{{object.profile.user.email}}">{{object.profile.user.email}}</a></li>
+		<li><a target="_blank" href="http://twitter.com/{{object.profile.twitter}}">{{object.profile.twitter}}</a></li>
+		<li><a target="_blank" href="{{object.profile.github}}">{{object.profile.github}}</a></li>
+	</ul>
+	<p>{{object.profile.description}}</p>
+	<a id="download">Download PDF</a>
+	<a id="print">Print</a>
+{% endblock %}
+
+{% block main %}	
+	{% if object.highlights %}
+	<div id="highlights">
+		<h2>Highlights</h2>
+		<ul>
+		{% for h in object.highlights.all %}
+			<li><p>{{ h.description|safe }}</p></li>
+		{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+	{% if object.skillset %}
+	<div id="skills">
+		<h2>Skills</h2>
+		<ul>
+		{% for s in object.skillset.all %}
+			<li><strong>{{ s.name }}</strong>
+			<p>
+			{% for skill in s.skills_set.all %}
+				<span class="vtip {{skill.get_rating_display}}" title="{{skill.get_rating_display}}">{{skill.name}}</span>{% if not forloop.last %},{% endif %}
+			{% endfor %}
+			</p>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+	{% if object.jobs %}
+	{% regroup object.jobs.all by get_type_of_job_display as jobs_list %}
+	<div id="experience">
+		<h2>Experience</h2>
+		{% for j in jobs_list %}
+			<h3>{{ j.grouper }}</h3>
+			<ul>
+				{% for job in j.list %}
+				<li>
+					<a href="{{job.url}}"><strong>{{ job.company }}</strong></a> &mdash; 
+					<span class="dates">{{ job.start|date:"F Y" }} - {{ job.end|default:""|date:"F Y" }}</span>
+					{% if job.position_set.all %}
+					<ul>
+						{% for p in job.position_set.all %}
+						<li>{{p.title}} &middot; {{ p.start|date:"m/y" }}-{{ p.end|date:"m/y" }}</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+					<p>{{ job.description }}</p>
+				</li>
+				{% endfor %}
+			</ul>
+		{% endfor %}
+	</div>
+	{% endif %}
+	{% if object.education %}
+	<div id="education">
+		<h2>Education</h2>
+		<ul>
+		{% for e in object.education.all %}
+			<li><strong>{{e.degree}}, {{e.subject}}</strong> - <span class="dates">{{e.date}} {% if e.in_progress %} (expected) {% endif %}</span><br />
+				<a href="{{e.school_url}}">{{ e.school }}</a>, {{ e.location }}
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+{% endblock %}
+{% block footer %}
+<p>Created using <a href="http://www.python.org/">Python</a>, <a href="http://www.djangoproject.com/">Django</a>, <a href="http://south.aeracode.org/">South</a>, and a truckload of love. <a id="view-src">View Source &rarr;</a></p>
+{% endblock %}
