@@ -37,6 +37,7 @@ class Skills(models.Model):
 	name = models.CharField(max_length=140)
 	skillset = models.ForeignKey(Skillset)
 	rating = models.CharField(max_length=1, choices=RATINGS)
+	start = models.DateField(blank=True,null=True)
 	def __unicode__(self):
 		return self.name
 	class Meta:
