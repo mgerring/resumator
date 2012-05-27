@@ -26,7 +26,7 @@ DEFAULT_FILE_STORAGE = 'django_dropbox.storage.DropboxStorage'
 try:
 	DROPBOX_CONSUMER_KEY = os.environ['DROPBOX_C_KEY']
 	DROPBOX_CONSUMER_SECRET = os.environ['DROPBOX_C_S']
-	DROPBOX_ACCESS_TOKEN = os.environ['DROPBOX_A_T']
+	DROPBOX_ACCESS_TOKEN = os.environ['DROPBOX_A_C']
 	DROPBOX_ACCESS_TOKEN_SECRET = os.environ['DROPBOX_A_S']
 except:
 	pass
