@@ -21,7 +21,9 @@ DATABASES = {
     }
 }
 
-DEFAULT_FILE_STORAGE = 'storages.backends.sftpstorage.SFTPStorage'
+DEFAULT_FILE_STORAGE = 'django_dropbox.storage.DropboxStorage'
+
+"""
 try:
 	SFTP_STORAGE_HOST = os.environ['STORAGE_HOST']
 	SFTP_STORAGE_ROOT = os.environ['STORAGE_ROOT']
@@ -30,7 +32,7 @@ try:
 		'password':os.environ['STORAGE_PW'],
 	}
 except:
-	pass
+	pass"""
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -137,7 +139,8 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 	'resume.data',
 	'south',
-	'storages',
+	#'storages',
+	'django_dropbox',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -168,3 +171,8 @@ LOGGING = {
         },
     }
 }
+
+try:
+	from localsettings import *
+except:
+	pass
