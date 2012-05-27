@@ -23,16 +23,13 @@ DATABASES = {
 
 DEFAULT_FILE_STORAGE = 'django_dropbox.storage.DropboxStorage'
 
-"""
 try:
-	SFTP_STORAGE_HOST = os.environ['STORAGE_HOST']
-	SFTP_STORAGE_ROOT = os.environ['STORAGE_ROOT']
-	SFTP_STORAGE_PARAMS = {
-		'username':os.environ['STORAGE_UN'],
-		'password':os.environ['STORAGE_PW'],
-	}
+	DROPBOX_CONSUMER_KEY = os.environ['DROPBOX_C_KEY']
+	DROPBOX_CONSUMER_SECRET = os.environ['DROPBOX_C_S']
+	DROPBOX_ACCESS_TOKEN = os.environ['DROPBOX_A_T']
+	DROPBOX_ACCESS_TOKEN_SECRET = os.environ['DROPBOX_A_S']
 except:
-	pass"""
+	pass
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
