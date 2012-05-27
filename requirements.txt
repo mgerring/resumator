@@ -3,3 +3,4 @@ psycopg2==2.4.5
 south==0.7.5
 pil==1.1.7
 django-dropbox==0.0.1
+dropbox==1.4
