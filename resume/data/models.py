@@ -92,6 +92,7 @@ class ResumeVersion(models.Model):
 	skillset = models.ManyToManyField(Skillset)
 	jobs = models.ManyToManyField(Job)
 	education = models.ManyToManyField(Education)
+	source_link = models.URLField(blank=True,null=True)
 	slug = models.SlugField(blank=True)
 	def __unicode__(self):
 		return self.employer
