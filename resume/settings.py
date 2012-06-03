@@ -21,8 +21,8 @@ DATABASES = {
     }
 }
 
-DEFAULT_FILE_STORAGE = 'django_dropbox.storage.DropboxStorage'
-ACCESS_TYPE = 'app_folder'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
+
 try:
 	DROPBOX_CONSUMER_KEY = os.environ['DROPBOX_C_KEY']
 	DROPBOX_CONSUMER_SECRET = os.environ['DROPBOX_C_S']
@@ -136,8 +136,8 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 	'resume.data',
 	'south',
-	#'storages',
-	'django_dropbox',
+	'storages',
+	#'django_dropbox',
 )
 
 # A sample logging configuration. The only tangible logging
