@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Matthew Burton Gerring{% endblock %}
+
+{% block header %}
+	<h1>{{object.profile.user.first_name}} {{object.profile.user.last_name}}</h1>
+	<img src="{{object.profile.pic.url}}" alt="" />
+	<ul>
+		<li><a href="tel:{{resume.profile.phone}}">{{object.profile.phone}}</a></li>
+		<li><a href="mailto:{{resume.profile.user.email}}">{{object.profile.user.email}}</a></li>
+		<li><a target="_blank" href="http://twitter.com/{{resume.profile.twitter}}">{{object.profile.twitter}}</a></li>
+		<li><a target="_blank" href="{{resume.profile.github}}">{{object.profile.github}}</a></li>
+	</ul>
+	<p>{{object.profile.description}}</p>
+	<a id="download">Download PDF</a>
+	<a id="print">Print</a>
+{% endblock %}
+
+{% block main %}	
+{% endblock %}
+
+{% block footer %}
+<p>Created using <a href="http://www.python.org/">Python</a>, <a href="http://www.djangoproject.com/">Django</a>, <a href="http://south.aeracode.org/">South</a>, and a truckload of love. {% if object.source_link %}<a id="view-src" href="{{ object.source_link }}">View Source &rarr;</a>{% endif %}</p>
+{% endblock %}
