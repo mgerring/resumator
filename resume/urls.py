@@ -14,6 +14,6 @@ urlpatterns = patterns('',
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
 	(r'^resume/(?P<pk>\d)/$', DetailView.as_view(model=ResumeVersion, template_name='resume.html')),
-	(r'^resume/(?P<resume_id>\d).json/$', 'resume.data.views.resume_as_json'),
+	(r'^(?P<slug>\w+)/$', DetailView.as_view(model=ResumeVersion, template_name='resume.html')),
 )
 urlpatterns += staticfiles_urlpatterns()
