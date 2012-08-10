@@ -1,5 +1,7 @@
 localsettings.py
 *.py[cod]
+*.sqlite
+db
 
 # C extensions
 *.so

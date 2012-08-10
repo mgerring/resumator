@@ -36,7 +36,7 @@ tt { display: block; margin: 1.5em 0; line-height: 1.5; }
 
 input, select { vertical-align: middle; }
 
-body { font:90% sans-serif; *font-size:small;line-height:1.5em; } 
+body { font-family: 'Neuton', serif; font-size:100%; *font-size:small; line-height:1.5em; } 
 select, input, textarea, button { font:99% sans-serif; }
 
 html { overflow-y: scroll; }
@@ -73,14 +73,26 @@ button {  width: auto; overflow: visible; }
 body, select, input, textarea {  color: #444; }
 h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 
-@link-base: #7996BE;
+@blue : #0054A8;
+@black: #222;
 
-a { color: #7996BE; text-decoration: none;}
-a:active, a:visited { color:darken(#ABB3BE,10%); }
-a:hover { color: #ECD97A; border-bottom:1px #ECD97A dotted; text-decoration:none; }
+@link-base: @blue;
 
-h1,h2,h3,h4,h5,h6 { font-weight: bold; font-family: Georgia, serif; color:#455D8C;}
-strong { color:#455D8C; }
+a {
+	text-decoration:none;
+	color:@blue;
+	&:visited {
+		color: lighten(@blue, 40%);
+	}
+	&:hover {
+		color: darken(@blue, 10%);
+		border-bottom:1px dotted darken(@blue, 10%);
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Oswald', sans-serif; font-weight:bold;
+}
 
 h1 { font-size: 2.9em; line-height: 1; margin-bottom: 0.5em; }
 h2 { font-size: 1.9em; margin-bottom: 0.75em; }
@@ -103,19 +115,17 @@ abbr, acronym { border-bottom: 1px dotted #000; }
 address { margin-top: 1.5em; font-style: italic; }
 del { color: #000; }
 
-
 html {
-	background:#46423F;
 	min-height:100%;
 }
 body {
 	width:800px;
 	margin:0 auto;
-	background:#FBFBFB;
 	height:100%;
 	min-height:100%;
 	padding-left: 20px;
 	padding-right: 20px;
+	
 }
 header {
 	text-align:center;
