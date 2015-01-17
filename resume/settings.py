@@ -21,15 +21,6 @@ DATABASES = {
     }
 }
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
-
-try:
-	DROPBOX_CONSUMER_KEY = os.environ['DROPBOX_C_KEY']
-	DROPBOX_CONSUMER_SECRET = os.environ['DROPBOX_C_S']
-	DROPBOX_ACCESS_TOKEN = os.environ['DROPBOX_A_T']
-	DROPBOX_ACCESS_TOKEN_SECRET = os.environ['DROPBOX_A_T_S']
-except:
-	pass
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -136,7 +127,6 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 	'resume.data',
 	'south',
-	'storages',
 	#'django_dropbox',
 )
 

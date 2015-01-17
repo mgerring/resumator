@@ -9,11 +9,10 @@ class Profile(models.Model):
 	url		=	models.CharField(max_length=140, blank=True)
 	phone	=	models.CharField(max_length=20, blank=True)
 	description = models.TextField(blank=True)
-	pic		= models.ImageField(upload_to="profile_images", null=True, blank=True)
 	def __unicode__(self):
 		name = self.user
 		return name.username
-	
+
 class Highlights(models.Model):
 	profile = models.ForeignKey(Profile)
 	description = models.TextField()
@@ -64,13 +63,13 @@ class Job(models.Model):
 
 class Position(models.Model):
 	job = models.ForeignKey(Job)
-	title = models.CharField(max_length=50)	
+	title = models.CharField(max_length=50)
 	start = models.DateField()
 	end = models.DateField(blank=True)
 	current = models.BooleanField()
 	def __unicode__(self):
 		return self.title
-	
+
 class Education(models.Model):
 	degree = models.CharField(max_length=50)
 	subject = models.CharField(max_length=50)
